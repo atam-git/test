@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
+require("dotenv").config();
 
 const app = express();
 
@@ -22,10 +23,9 @@ require("./config/passport")(passport);
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to MongoDB
-mongoose.connect(
-  "mongodb+srv://ris:4Yw6ZhShiYBxMZEI@nodecluster.w2hcndg.mongodb.net/sample_mfix?retryWrites=true&w=majority&appName=NodeCluster"
-);
+// Connect to MongoDB using Mongoose
+const URI = process.env.MONGODB_URI;
+mongoose.connect(URI);
 
 // Check if MongoDB connected successfully
 mongoose.connection.on("connected", () => {
