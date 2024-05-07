@@ -3,12 +3,13 @@ const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const flash = require("connect-flash");
+const path = require("path");
 const session = require("express-session");
 require("dotenv").config();
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // EJS
 app.use(expressLayouts);
